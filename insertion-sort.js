@@ -19,17 +19,3 @@ function insertionSort(arr) {
 
 console.log(insertionSort([2, 1, 9, 76, 4]));
 console.log(insertionSort([0, 7, 8, 3, 2, 1, 18, 5]));
-// loop: 1
-// subloop: 0
-// array: [ 2, 1, 9, 76, 4 ]
-// updated array: [ 1, 2, 9, 76, 4 ]
-// loop: 2
-// loop: 3
-// loop: 4
-// subloop: 3
-// array: [ 1, 2, 9, 76, 4 ]
-// updated array: [ 1, 2, 9, 4, 76 ]
-// subloop: 2
-// array: [ 1, 2, 9, 4, 76 ]
-// updated array: [ 1, 2, 9, 4, 76 ]
-// [ 1, 2, 9, 4, 76 ]
