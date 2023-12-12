@@ -228,3 +228,32 @@ function oneDown(str) {
 // console.log(oneDown("Ifmmp"));
 // console.log(oneDown("Uif usjdl up uijt lbub jt tjnqmf"));
 // console.log(oneDown(76));
+
+// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+function XO(str) {
+  // define arrays to keep tally of xs and ohs
+  let exes = [];
+  let ohs = [];
+  // loop over string and push xs to exes array and os to ohs array
+  for (let char of str) {
+    if (char.toLowerCase() === "x") {
+      exes.push(char);
+    } else if (char.toLowerCase() === "o") {
+      ohs.push(char);
+    }
+  }
+  // compare length of arrays and if not the same, false, if the same, true
+  if (exes.length === ohs.length) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// Examples input/output:
+
+// console.log(XO("ooxx")); //=> true
+// console.log(XO("xooxx")); //=> false
+// console.log(XO("ooxXm")); //=> true
+// console.log(XO("zpzpzpp")); //=> true // when no 'x' and 'o' is present should return true
+// console.log(XO("zzoo")); // => false
