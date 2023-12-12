@@ -199,6 +199,32 @@ function highAndLow(str) {
   // return a string with both variables
   return `${max} ${min}`;
 }
-console.log(highAndLow("1 2 3 4 5")); // return "5 1"
-console.log(highAndLow("1 2 -3 4 5")); // return "5 -3"
-console.log(highAndLow("1 9 3 4 -5")); // return "9 -5"
+// console.log(highAndLow("1 2 3 4 5")); // return "5 1"
+// console.log(highAndLow("1 2 -3 4 5")); // return "5 -3"
+// console.log(highAndLow("1 9 3 4 -5")); // return "9 -5"
+
+// A very passive-aggressive co-worker of yours was just fired. While he was gathering his things, he quickly inserted a bug into your system which renamed everything to what looks like jibberish. He left two notes on his desk, one reads: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" while the other reads: "Uif usjdl up uijt lbub jt tjnqmf kvtu sfqmbdf fwfsz mfuufs xjui uif mfuufs uibu dpnft cfgpsf ju".
+
+// Rather than spending hours trying to find the bug itself, you decide to try and decode it.
+
+// If the input is not a string, your function must return "Input is not a string". Your function must be able to handle capital and lower case letters. You will not need to worry about punctuation.
+
+function oneDown(str) {
+  const key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  if (typeof str !== typeof "string") {
+    return "Input is not a string";
+  }
+  const resultArray = [];
+  for (let char of str) {
+    if (char === " " || char === "," || char === ".") {
+      resultArray.push(char);
+    }
+    const position = key.indexOf(char);
+    resultArray.push(key[position - 1]);
+  }
+  return resultArray.join("");
+}
+
+// console.log(oneDown("Ifmmp"));
+// console.log(oneDown("Uif usjdl up uijt lbub jt tjnqmf"));
+// console.log(oneDown(76));
