@@ -257,3 +257,68 @@ function XO(str) {
 // console.log(XO("ooxXm")); //=> true
 // console.log(XO("zpzpzpp")); //=> true // when no 'x' and 'o' is present should return true
 // console.log(XO("zzoo")); // => false
+
+// Your task is to create a function that does four basic mathematical operations.
+
+// The function should take three arguments - operation(string/char), value1(number), value2(number).
+// The function should return result of numbers after applying the chosen operation.
+
+function basicOp(operation, value1, value2) {
+  // Code
+  if (operation === "+") {
+    return value1 + value2;
+  } else if (operation === "-") {
+    return value1 - value2;
+  } else if (operation === "*") {
+    return value1 * value2;
+  } else {
+    return value1 / value2;
+  }
+}
+
+// Examples(Operator, value1, value2) --> output
+// console.log(basicOp("+", 4, 7)); //--> 11
+// console.log(basicOp("-", 15, 18)); //--> -3
+// console.log(basicOp("*", 5, 5)); //--> 25
+// console.log(basicOp("/", 49, 7)); //--> 7
+
+// This time no story, no theory. The examples below show you how to write function accum:
+
+// function accum(str) {
+//   let strArray = [];
+//   for (let i = 0; i < str.length + 1; i++) {
+//     for (let j = 1; j < i + 1; j++) {
+//       const letter = str[i - 1];
+//       j === 1
+//         ? strArray.push(letter.toUpperCase())
+//         : strArray.push(letter.toLowerCase());
+//     }
+//     strArray.push("-");
+//   }
+//   strArray.splice(-1, 1);
+//   strArray.splice(0, 1);
+//   const result = strArray.join("");
+//   return result;
+//   // console.log(result);
+// }
+
+//improvement using repeat function
+function accum(str) {
+  let strArray = [];
+  for (let i = 0; i < str.length; i++) {
+    let letter = str[i];
+    console.log(letter);
+    let unit = `${letter.toUpperCase()}${letter.toLowerCase().repeat(i)}`;
+    strArray.push(unit);
+  }
+  const result = strArray.join("-");
+  return result;
+  // console.log(result);
+}
+// Examples:
+console.log(accum("abcd")); //-> "A-Bb-Ccc-Dddd"
+console.log(accum("RqaEzty")); //-> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+console.log(accum("cwAt")); //-> "C-Ww-Aaa-Tttt"
+//The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+// FUNDAMENTALSSTRINGSPUZZLES
