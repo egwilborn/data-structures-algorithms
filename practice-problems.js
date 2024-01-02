@@ -316,9 +316,80 @@ function accum(str) {
   // console.log(result);
 }
 // Examples:
-console.log(accum("abcd")); //-> "A-Bb-Ccc-Dddd"
-console.log(accum("RqaEzty")); //-> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
-console.log(accum("cwAt")); //-> "C-Ww-Aaa-Tttt"
+// console.log(accum("abcd")); //-> "A-Bb-Ccc-Dddd"
+// console.log(accum("RqaEzty")); //-> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// console.log(accum("cwAt")); //-> "C-Ww-Aaa-Tttt"
 //The parameter of accum is a string which includes only letters from a..z and A..Z.
 
-// FUNDAMENTALSSTRINGSPUZZLES
+// DESCRIPTION:
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+// Rules for a smiling face:
+
+// Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+// A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+// Every smiling face must have a smiling mouth that should be marked with either ) or D
+// No additional characters are allowed except for those mentioned.
+
+// Valid smiley face examples: :) :D ;-D :~)
+// Invalid smiley faces: ;( :> :} :]
+function countSmileys(smileys) {
+  let count = 0;
+  smileys.forEach(function (smiley) {
+    if (smiley.includes(":") || smiley.includes(";")) {
+      if (smiley.includes("D") || smiley.includes(")")) {
+        if (smiley.length === 2) {
+          count += 1;
+        } else if (
+          (smiley.length === 3) &
+          (smiley.includes("-") || smiley.includes("~"))
+        )
+          count += 1;
+      }
+    }
+  });
+  return count;
+}
+// Example
+// console.log(countSmileys([":)", ";(", ";}", ":-D"])); // should return 2;
+// console.log(countSmileys([";D", ":-(", ":-)", ";~)"])); // should return 3;
+// console.log(countSmileys([";]", ":[", ";*", ":$", ";-D"])); // should return 1;
+// Note
+// In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
+
+// Prompt:
+// - Write a function named findHighestPriced that accepts a single array of objects.
+// - The objects contained in the array are guaranteed to have a price property holding a numeric value.
+// - The function should return the object in the array that has the largest value held in the price property.
+// - If there's a tie between two or more objects, return the first of those objects in the array.
+// - Return the original object, not a copy.
+// - DO NOT mutate the array, i.e., do not sort it
+// Examples:
+findHighestPriced([
+  { sku: "a1", price: 25 },
+  { sku: "b2", price: 5 },
+  { sku: "c3", price: 50 },
+  { sku: "d4", price: 10 },
+]);
+//=> { sku: 'c3', price: 50 }
+findHighestPriced([
+  { sku: "a1", price: 25 },
+  { sku: "b2", price: 50 },
+  { sku: "c3", price: 50 },
+  { sku: "d4", price: 10 },
+]);
+//=> { sku: 'b2', price: 50 }
+// -----------------------------------------------------------------*/
+// // Your solution for 16-findHighestPriced here:
+
+function findHighestPriced(arr) {
+  let max = 0;
+  let maxIdx = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].price > max) {
+      max = arr[i].price;
+      maxIdx = i;
+    }
+  }
+  return arr[maxIdx];
+}
