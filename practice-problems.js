@@ -405,11 +405,19 @@ function findHighestPriced(arr) {
 
 function toCamelCase(str) {
   let fragments = str.split(/[-,_| ]/);
+  let capitalFragments = [];
   for (let i = 0; i < fragments.length; i++) {
-    fragments[i][0].toUpperCase();
+    if (i === 0) {
+      capitalFragments.push(fragments[i]);
+    } else {
+      let capitalFragment =
+        fragments[i][0].toUpperCase() + fragments[i].slice(1);
+      capitalFragments.push(capitalFragment);
+    }
   }
+  return capitalFragments.join("");
 }
 
-toCamelCase("the-stealth-warrior");
-//toCamelCase("The_Stealth_Warrior");
-//toCamelCase("The_Stealth-Warrior");
+console.log(toCamelCase("the-stealth-warrior"));
+console.log(toCamelCase("The_Stealth_Warrior"));
+console.log(toCamelCase("The_Stealth-Warrior"));
