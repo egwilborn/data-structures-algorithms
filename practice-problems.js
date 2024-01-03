@@ -365,19 +365,19 @@ function countSmileys(smileys) {
 // - Return the original object, not a copy.
 // - DO NOT mutate the array, i.e., do not sort it
 // Examples:
-findHighestPriced([
-  { sku: "a1", price: 25 },
-  { sku: "b2", price: 5 },
-  { sku: "c3", price: 50 },
-  { sku: "d4", price: 10 },
-]);
-//=> { sku: 'c3', price: 50 }
-findHighestPriced([
-  { sku: "a1", price: 25 },
-  { sku: "b2", price: 50 },
-  { sku: "c3", price: 50 },
-  { sku: "d4", price: 10 },
-]);
+// findHighestPriced([
+//   { sku: "a1", price: 25 },
+//   { sku: "b2", price: 5 },
+//   { sku: "c3", price: 50 },
+//   { sku: "d4", price: 10 },
+// ]);
+// //=> { sku: 'c3', price: 50 }
+// findHighestPriced([
+//   { sku: "a1", price: 25 },
+//   { sku: "b2", price: 50 },
+//   { sku: "c3", price: 50 },
+//   { sku: "d4", price: 10 },
+// ]);
 //=> { sku: 'b2', price: 50 }
 // -----------------------------------------------------------------*/
 // // Your solution for 16-findHighestPriced here:
@@ -393,3 +393,23 @@ function findHighestPriced(arr) {
   }
   return arr[maxIdx];
 }
+
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case). The next words should be always capitalized.
+
+// Examples
+// "the-stealth-warrior" gets converted to "theStealthWarrior"
+
+// "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+
+// "The_Stealth-Warrior" gets converted to "TheStealthWarrior"
+
+function toCamelCase(str) {
+  let fragments = str.split(/[-,_| ]/);
+  for (let i = 0; i < fragments.length; i++) {
+    fragments[i][0].toUpperCase();
+  }
+}
+
+toCamelCase("the-stealth-warrior");
+//toCamelCase("The_Stealth_Warrior");
+//toCamelCase("The_Stealth-Warrior");
