@@ -418,6 +418,32 @@ function toCamelCase(str) {
   return capitalFragments.join("");
 }
 
-console.log(toCamelCase("the-stealth-warrior"));
-console.log(toCamelCase("The_Stealth_Warrior"));
-console.log(toCamelCase("The_Stealth-Warrior"));
+// console.log(toCamelCase("the-stealth-warrior"));
+// console.log(toCamelCase("The_Stealth_Warrior"));
+// console.log(toCamelCase("The_Stealth-Warrior"));
+
+//Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+function divideString(str) {
+  let evens = [];
+  let odds = [];
+  let solutionArray = [];
+  for (let i = 0; i < str.length; i++) {
+    if (i % 2 === 0) {
+      evens.push(str[i]);
+    } else {
+      odds.push(str[i]);
+    }
+  }
+  if (odds.length < evens.length) {
+    odds.push("_");
+  }
+  evens.forEach(function (even, idx) {
+    solutionArray.push(`${evens[idx]}${odds[idx]}`);
+  });
+  return solutionArray;
+}
+//Examples:
+
+// console.log(divideString("abc")); //=>  ['ab', 'c_']
+// console.log(divideString("abcdef")); //=> ['ab', 'cd', 'ef']
