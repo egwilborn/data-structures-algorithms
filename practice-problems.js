@@ -506,3 +506,63 @@ function cakes(recipe, ingredients) {
 //     { sugar: 500, flour: 2000, milk: 2000 }
 //   )
 // );
+
+// How can you tell an extrovert from an introvert at NSA?
+// Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf.
+
+// I found this joke on USENET, but the punchline is scrambled. Maybe you can decipher it?
+// According to Wikipedia, ROT13 is frequently used to obfuscate jokes on USENET.
+
+// For this task you're only supposed to substitute characters. Not spaces, punctuation, numbers, etc.
+
+// Test examples:
+
+function rot13(str) {
+  const key = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  let result = [];
+  for (let char of str) {
+    if (!key.includes(char.toLowerCase())) {
+      result.push(char);
+    } else {
+      let decodedCharIndex = key.indexOf(char.toLowerCase()) + 13;
+      if (decodedCharIndex > 25) {
+        decodedCharIndex = decodedCharIndex - 26;
+      }
+      if (char === char.toUpperCase()) {
+        result.push(key[decodedCharIndex].toUpperCase());
+      } else {
+        result.push(key[decodedCharIndex]);
+      }
+    }
+  }
+  return result.join("");
+}
+console.log(rot13("EBG13 rknzcyr.")); //-> "ROT13 example."
+console.log(rot13("This is my first ROT13 excercise!")); // -> "Guvf vf zl svefg EBG13 rkprepvfr!"
