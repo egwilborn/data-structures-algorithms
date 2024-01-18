@@ -564,5 +564,41 @@ function rot13(str) {
   }
   return result.join("");
 }
-console.log(rot13("EBG13 rknzcyr.")); //-> "ROT13 example."
-console.log(rot13("This is my first ROT13 excercise!")); // -> "Guvf vf zl svefg EBG13 rkprepvfr!"
+// console.log(rot13("EBG13 rknzcyr.")); //-> "ROT13 example."
+// console.log(rot13("This is my first ROT13 excercise!")); // -> "Guvf vf zl svefg EBG13 rkprepvfr!"
+
+//Given an integer array nums, return true if any value appears at least twice in the array,
+//and return false if every element is distinct.
+function containsDuplicate(nums) {
+  //pseudocode
+  // make a state variable to store whether the array contains a duplicate
+  let includesDuplicate = false;
+  //make an object variable that contains each character and its count
+  let numsCount = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] in numsCount) {
+      numsCount[nums[i]] += 1;
+      //add logic where if the count increases to greater than one, the state variable is false
+      includesDuplicate = true;
+      break;
+    } else {
+      numsCount[nums[i]] = 1;
+    }
+  }
+  return includesDuplicate;
+}
+
+// // Example 1:
+// console.log(containsDuplicate([1, 2, 3, 1]));
+// // Input: nums = [1,2,3,1]
+// // Output: true
+
+// // Example 2:
+// console.log(containsDuplicate([1, 2, 3, 4]));
+// // Input: nums = [1,2,3,4]
+// // Output: false
+
+// // Example 3:
+// console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]));
+// // Input: nums = [1,1,1,3,3,4,3,2,4,2]
+// // Output: true
