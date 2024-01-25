@@ -692,3 +692,49 @@ function majorityElement(nums) {
 
 // majorityElement([3, 2, 3]);
 // majorityElement([2, 2, 1, 1, 1, 2, 2]);
+
+// Example 1:
+
+// Input: word1 = "abc", word2 = "pqr"
+// Output: "apbqcr"
+// Explanation: The merged string will be merged as so:
+// word1:  a   b   c
+// word2:    p   q   r
+// merged: a p b q c r
+// Example 2:
+
+// Input: word1 = "ab", word2 = "pqrs"
+// Output: "apbqrs"
+// Explanation: Notice that as word2 is longer, "rs" is appended to the end.
+// word1:  a   b
+// word2:    p   q   r   s
+// merged: a p b q   r   s
+// Example 3:
+
+// Input: word1 = "abcd", word2 = "pq"
+// Output: "apbqcd"
+// Explanation: Notice that as word1 is longer, "cd" is appended to the end.
+// word1:  a   b   c   d
+// word2:    p   q
+// merged: a p b q c   d
+
+var mergeAlternately = function (word1, word2) {
+  // figure out what is longest length of words - store in variable
+  let length = word1.length;
+  if (word2.length > word1.length) {
+    length = word2.length;
+  }
+  // make variable to store new string
+  let merged = [];
+  // for loop length of longest word
+  for (let i = 0; i < length; i++) {
+    if (word1[i]) merged.push(word1[i]);
+    if (word2[i]) merged.push(word2[i]);
+  }
+  return merged.join("");
+  // for each i, push that letter into new string variable
+};
+
+mergeAlternately("abc", "pqr");
+mergeAlternately("ab", "pqrs");
+mergeAlternately("abcd", "pq");
