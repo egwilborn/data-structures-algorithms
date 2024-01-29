@@ -735,6 +735,42 @@ var mergeAlternately = function (word1, word2) {
   // for each i, push that letter into new string variable
 };
 
-mergeAlternately("abc", "pqr");
-mergeAlternately("ab", "pqrs");
-mergeAlternately("abcd", "pq");
+// mergeAlternately("abc", "pqr");
+// mergeAlternately("ab", "pqrs");
+// mergeAlternately("abcd", "pq");
+
+// Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+// Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+
+function reverse(num) {
+  let result = null;
+  const str = Math.abs(num).toString();
+  const reverseStr = str.split("").reverse().join("");
+
+  if (num < 0) {
+    result = -parseInt(reverseStr);
+  } else result = parseInt(reverseStr);
+
+  if (reverseStr[0] === "0") {
+    result = parseInt(reverseStr.split().splice(0, 1));
+  }
+
+  if (result < -2147483648 || result > 2147483647) {
+    return 0;
+  } else return result;
+}
+// Example 1:
+// Input: x = 123
+// Output: 321
+console.log(reverse(123));
+
+// Example 2:
+// Input: x = -123
+// Output: -321
+console.log(reverse(-321));
+
+// Example 3:
+// Input: x = 120
+// Output: 21
+console.log(reverse(120));
