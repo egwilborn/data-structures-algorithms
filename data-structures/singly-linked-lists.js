@@ -17,18 +17,18 @@ class SinglyLinkedList {
     //create a new node using the value passed in the function
     const node = new Node(val);
     //if the list is empty - set head and tail equal to new node
-    if ((this.length = 0)) {
+    if (!this.head) {
       this.head = node;
-      this.tail = node;
+      this.tail = this.head;
     } else {
       // otherwise set the next property on the tail to be the new node
       this.tail.next = node;
+      //update the tail property to be the new node
       this.tail = node;
     }
-    length += 1;
-    //update the tail property to be the new node
-
     //increment length by one
+    this.length++;
+    return this;
   }
 }
 
@@ -39,5 +39,5 @@ class SinglyLinkedList {
 // first.next.next.next.next = new Node("you");
 
 const list = new SinglyLinkedList();
-list.push("HELLO!");
-list.push("goodbye!");
+console.log(list.push("HELLO!"));
+console.log(list.push("goodbye!"));
